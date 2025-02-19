@@ -43,9 +43,20 @@ export default function ProjectDetail() {
         {project ? "Tech Stack: " + project.techStack.join(", ") : ""}
       </h2>
 
+      {project && project.function && project.learn.length > 0 && (
+        <div className='w-full sm:w-[40rem]'>
+          <h2 className='text-2xl text-amber-500 mt-4'>ฟังชั่นการทำงาน :</h2>
+          <ul>
+            {project.function.map((item, index) => (
+              <li key={index} className="break-words mb-3">- {item}</li>
+            ))}
+          </ul>
+        </div>
+      )}
+
       {project && project.learn && project.learn.length > 0 && (
         <div className='w-full sm:w-[40rem]'>
-          <h2 className='text-green-700 mt-4'>สิ่งที่จะได้เรียนรู้จากโปรเจ็คนี้ :</h2>
+          <h2 className='text-2xl text-cyan-600 mt-6'>สิ่งที่จะได้เรียนรู้จากโปรเจ็คนี้ :</h2>
           <ul>
             {project.learn.map((item, index) => (
               <li key={index} className="break-words mb-3">- {item}</li>
@@ -55,11 +66,11 @@ export default function ProjectDetail() {
       )}
 
 
-      <pre className="text-lg font-semibold mb-2">Project Images</pre>
+      <pre className="text-xl font-semibold mt-6 mb-2">Project Images</pre>
       <SliderCard images={imageUrls} />
 
 
-      <h2 className='text-2xl text-red-700 sm:text-3xl'>
+      <h2 className='mt-6 text-2xl text-red-700 sm:text-3xl'>
         ซอร์สโค้ด สำหรับศึกษา หรือนำไปพัฒนาต่อยอด
         ราคาพิเศษ {project ? project.price : ""} บาท
       </h2>
